@@ -49,32 +49,28 @@ scene.setBackgroundImage(picture)
 mySprite.setPosition(74, 71)
 mySprite.setStayInScreen(true)
 info.setLife(3)
+let level3 = 40
+let level2 = 20
 let gameLength = 60
-let level3Time = 40
-let level2Time = 20
 let enemySpeed = 25
-let splashed_1 = false
-let splashed_2 = false
-let splashed_3 = false
+let faster_level_3 = false
+let faster_level_2 = false
+let faster_level_1 = false
 executed = false
 let tempo = 140
 info.startCountdown(gameLength)
-let gameStart = true
 game.splash("Have a Heart")
 game.onUpdateInterval(1000, function () {
-    if (game.runtime() / 1000 >= level3Time && splashed_3 == false) {
+    if (game.runtime() / 1000 >= level3 && faster_level_3 == false) {
         picture.replace(4, 1)
-        game.splash("Level 3")
         enemySpeed += 30
-        splashed_3 = true
-    } else if (game.runtime() / 1000 >= level2Time && splashed_2 == false) {
+        faster_level_3 = true
+    } else if (game.runtime() / 1000 >= level2 && faster_level_2 == false) {
         picture.replace(3, 4)
-        game.splash("Level 2")
         enemySpeed += 30
-        splashed_2 = true
-    } else if (game.runtime() / 1000 < level2Time && splashed_1 == false) {
-        game.splash("Level 1")
-        splashed_1 = true
+        faster_level_2 = true
+    } else if (game.runtime() / 1000 >= 0 && faster_level_1 == false) {
+        faster_level_1 = true
     }
 })
 forever(function () {
